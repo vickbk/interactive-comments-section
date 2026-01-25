@@ -1,12 +1,12 @@
 :root {
-  --ff-sora: "Sora", sans-serif;
+  --ff-rubik: "Rubik", sans-serif;
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: var(--ff-sora);
-  --font-mono: var(--ff-sora);
+  --font-sans: var(--ff-rubik);
+  --font-mono: var(--ff-rubik);
 }
 
 /* Styles for users who prefer reduced motion */
