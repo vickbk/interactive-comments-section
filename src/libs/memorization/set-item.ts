@@ -8,7 +8,7 @@ export default function setMemoItem(params: string, value: unknown) {
   localStorage.setItem(memoName, JSON.stringify(memo));
 }
 
-function setNested(memo: MemoObject, path: string[], value: unknown) {
+export function setNested(memo: MemoObject, path: string[], value: unknown) {
   let current = memo;
   for (let i = 0; i < path.length - 1; i++) {
     if (typeof current[path[i]] !== "object" || current[path[i]] === null) {

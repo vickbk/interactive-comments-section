@@ -6,9 +6,9 @@ export default function getMemoItem<T = unknown>(params: string): T {
   return getNested(getMemo(), path) as T;
 }
 
-function getNested(obj: MemoObject, path: string[]): unknown {
+export function getNested(obj: MemoObject, path: string[]): unknown {
   return path.reduce(
     (o: unknown, p) => (o ? (o as Record<string, unknown>)[p] : undefined),
-    obj
+    obj,
   );
 }
