@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <HeaderElement
       ref={outsideClose}
-      className="white flex justify-between p-4 sticky top-4 mb-4 items-center rounded-lg"
+      className="white flex justify-between p-4 sticky top-4 mb-8 items-center rounded-lg"
     >
       <Heading>
         <SROnly>Currently logged in as </SROnly>

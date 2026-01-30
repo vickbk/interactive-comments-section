@@ -7,26 +7,30 @@ import { Vote } from "./vote";
 
 export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
   return (
-    <>
-      <Article>
-        <Heading>
+    <section className="grid gap-4 background">
+      <Article className="white p-4 rounded-lg grid grid-cols-2 gap-4 items-center">
+        <Heading className="flex gap-4 col-span-full items-center">
           <SROnly>A comment by </SROnly>
-          <User />
+          <User showName />
+          <TimeDisplay />
         </Heading>
-        <TimeDisplay /> <ActionButtons />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit quia
-        reiciendis quaerat repellat! Corrupti soluta enim doloremque. Fugiat
-        commodi quasi optio, hic aliquid nulla doloremque quas ea repellat sunt.{" "}
-        <Editor />
+        <p className="col-span-full">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit
+          quia reiciendis quaerat repellat! Corrupti soluta enim doloremque.
+          Fugiat commodi quasi optio, hic aliquid nulla doloremque quas ea
+          repellat sunt.
+        </p>
         <Vote />
+        <ActionButtons />
+        <Editor />
       </Article>
       <Editor />
       {hasReplies && (
-        <>
+        <section className="pl-4 border-l b-grey-100">
           <Comment hasReplies={false} />
           <Comment hasReplies={false} />
-        </>
+        </section>
       )}
-    </>
+    </section>
   );
 };
