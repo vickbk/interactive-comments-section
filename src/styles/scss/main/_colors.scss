@@ -21,7 +21,7 @@ $colorsMap: (
 
 $primary-color: map.get($colorsMap, grey-50);
 $link-color: map.get($colorsMap, purple-600);
-$text-color: map.get($colorsMap, grey-800);
+$text-color: map.get($colorsMap, grey-500);
 $accent-color: map.get($colorsMap, purple-600);
 
 $exluded-variables: background foreground secondary;

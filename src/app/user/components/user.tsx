@@ -8,8 +8,15 @@ export const User = ({ showName = false }: { showName?: boolean }) => {
         <SROnly>User</SROnly>
       </dt>
       <dd className="flex items-center gap-4">
-        <img src="./vite.svg" alt="user name" />
-        <span className={joinClasses([!showName && "sr-only"])}>User</span>
+        <img className="rounded-full" src="./vite.svg" alt="user name" />
+        <span
+          className={joinClasses([
+            !showName && "sr-only",
+            "c-grey-800 font-semibold",
+          ])}
+        >
+          User
+        </span>
       </dd>
     </dl>
   );

@@ -1,9 +1,19 @@
-import { Icon } from "@/components/shared";
+import { Icon, SROnly } from "@/components/shared";
 
-export const Button = () => {
+export const ActionBtn = ({
+  text,
+  icon,
+  color,
+  srText = "post",
+}: {
+  color: string;
+  text: string;
+  icon: string;
+  srText?: string;
+}) => {
   return (
-    <button type="button">
-      <Icon name="reply-fill" /> Reply
+    <button type="button" className={color}>
+      <Icon name={icon} /> {text} <SROnly>{srText}</SROnly>
     </button>
   );
 };
