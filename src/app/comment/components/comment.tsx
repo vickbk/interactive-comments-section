@@ -5,7 +5,7 @@ import { ActionButtons } from "./action-buttons";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
-export const Comment = () => {
+export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
   return (
     <>
       <Article>
@@ -21,6 +21,12 @@ export const Comment = () => {
         <Vote />
       </Article>
       <Editor />
+      {hasReplies && (
+        <>
+          <Comment hasReplies={false} />
+          <Comment hasReplies={false} />
+        </>
+      )}
     </>
   );
 };
