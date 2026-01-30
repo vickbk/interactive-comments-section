@@ -62,3 +62,14 @@ export const Article = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
     );
   },
 );
+
+export const Header = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
+  ({ children, ...props }, ref) => {
+    const level = useContext(HeadingCtx);
+    return (
+      <header {...props} ref={ref}>
+        <HeadingCtx value={level + 1}>{children}</HeadingCtx>
+      </header>
+    );
+  },
+);

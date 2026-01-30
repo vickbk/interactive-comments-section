@@ -19,10 +19,10 @@ $colorsMap: (
   secondary: var(--secondary)
 );
 
-$primary-color: map.get($colorsMap, neutral-0);
-$link-color: map.get($colorsMap, blue-600);
-$text-color: map.get($colorsMap, neutral-900);
-$accent-color: map.get($colorsMap, blue-600);
+$primary-color: map.get($colorsMap, grey-50);
+$link-color: map.get($colorsMap, purple-600);
+$text-color: map.get($colorsMap, grey-800);
+$accent-color: map.get($colorsMap, purple-600);
 
 $exluded-variables: background foreground secondary;
 
@@ -40,25 +40,25 @@ $exluded-variables: background foreground secondary;
   --link-color: #{$link-color};
   --secondary: var(--neutral-500);
 
-  @media (prefers-color-scheme: dark) {
-    --background: #{$text-color};
-    --foreground: #{$primary-color};
-    --secondary: var(--neutral-500);
-  }
-  &[theme="dark"],
-  *[theme="dark"] {
-    --background: #{$text-color};
-    --foreground: #{$primary-color};
-    --secondary: var(--neutral-400);
-  }
-  &[theme="light"],
-  *[theme="light"] {
-    --background: #{$primary-color};
-    --foreground: #{$text-color};
-    --accent-color: #{$accent-color};
-    --link-color: #{$link-color};
-    --secondary: var(--neutral-500);
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   --background: #{$text-color};
+  //   --foreground: #{$primary-color};
+  //   --secondary: var(--neutral-500);
+  // }
+  // &[theme="dark"],
+  // *[theme="dark"] {
+  //   --background: #{$text-color};
+  //   --foreground: #{$primary-color};
+  //   --secondary: var(--neutral-400);
+  // }
+  // &[theme="light"],
+  // *[theme="light"] {
+  //   --background: #{$primary-color};
+  //   --foreground: #{$text-color};
+  //   --accent-color: #{$accent-color};
+  //   --link-color: #{$link-color};
+  //   --secondary: var(--neutral-500);
+  // }
   --outstand: var(--element-bg);
 }
 

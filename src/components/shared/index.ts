@@ -2,7 +2,7 @@ export { Icon } from "./bi-icon";
 export { ColorsHelper } from "./ColorsHelper";
 export { CustomDetails } from "./CustomDetails";
 export { default as CustomDialog } from "./CustomDialog";
-export { Article, Heading, Main, Section } from "./heading-managers";
+export { Article, Header, Heading, Main, Section } from "./heading-managers";
 export { LoadingPlaceholder } from "./loading-placeholder";
 export { PagingGapHolding } from "./paging/page-holding";
 export { PagingButton } from "./paging/paging-button";
