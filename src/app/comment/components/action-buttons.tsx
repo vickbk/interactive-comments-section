@@ -1,3 +1,11 @@
+import { Button } from "./btn";
+
 export const ActionButtons = () => {
-  return <div>ActionButtons</div>;
+  return (
+    <div>
+      <Button />
+      <Button />
+      <Button />
+    </div>
+  );
 };
