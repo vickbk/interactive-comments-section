@@ -4,6 +4,6 @@ import { Editor } from "./editor";
 describe("Editor", () => {
   test("Renders editor with default type set to comment", async () => {
     render(<Editor />);
-    expect(screen.findByText(/send/)).toBeVisible();
+    expect(await screen.findByPlaceholderText(/a comment/)).toBeVisible();
   });
 });
