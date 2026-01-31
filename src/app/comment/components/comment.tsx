@@ -32,17 +32,23 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
           <User showName />
           <TimeDisplay />
         </Heading>
-        <p className="col-span-full">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit
-          quia reiciendis quaerat repellat! Corrupti soluta enim doloremque.
-          Fugiat commodi quasi optio, hic aliquid nulla doloremque quas ea
-          repellat sunt.
-        </p>
-        <Vote />
-        <ActionButtons
-          isCurrentUser={isCurrentUser}
-          actions={{ toggleReply, toggleUpdate }}
-        />
+        {!openUpdate && (
+          <>
+            <p className="col-span-full">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit
+              quia reiciendis quaerat repellat! Corrupti soluta enim doloremque.
+              Fugiat commodi quasi optio, hic aliquid nulla doloremque quas ea
+              repellat sunt.
+            </p>
+            <Vote />
+          </>
+        )}
+        <div className={openUpdate ? "col-span-full" : ""}>
+          <ActionButtons
+            isCurrentUser={isCurrentUser}
+            actions={{ toggleReply, toggleUpdate }}
+          />
+        </div>
         <div className="col-span-full">
           {isCurrentUser
             ? openUpdate && <Editor type="update" />
