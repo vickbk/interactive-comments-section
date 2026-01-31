@@ -14,31 +14,35 @@ export async function seedComments() {
   if (saved) return saved;
   const { comments } = data;
   const flatten: CommentType[] = await Promise.all(
-    flatComments(comments).map(async ({ user, id, content: text, replies }) => {
-      const current = new Date().getTime();
-      return {
-        id,
-        text,
-        replies,
-        createdAt: getRandomInt(current - TIME_DIFF, current),
-        uId: (await getUserByName(user!.username))!.id,
-      };
-    }),
+    flatComments(comments).map(
+      async ({ user, id, content: text, replies, isReply }) => {
+        const current = new Date().getTime();
+        return {
+          id,
+          text,
+          replies,
+          createdAt: getRandomInt(current - TIME_DIFF, current),
+          uId: (await getUserByName(user!.username))!.id,
+          isReply,
+        };
+      },
+    ),
   );
   setMemoItem("comments", flatten);
   return getMemoItem<CommentType[]>("comments");
 }
 
-export function flatComments(comments?: SeedComment[] | null) {
+export function flatComments(comments?: SeedComment[] | null, isReply = false) {
   if (!comments) return [];
   const flatten: FlattenSeedComment[] = [];
   comments.forEach(({ replies, ...comment }) => {
     flatten.push(
       {
         ...comment,
+        isReply,
         replies: replies?.map(({ id }) => id) ?? null,
       },
-      ...flatComments(replies),
+      ...flatComments(replies, true),
     );
   });
   return flatten;

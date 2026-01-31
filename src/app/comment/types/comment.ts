@@ -6,6 +6,7 @@ export type CommentType = {
   replies?: CommentType["id"][] | null;
   createdAt: EpochTimeStamp;
   uId: UserType["id"];
+  isReply: boolean;
 };
 
 export type SeedComment = {
@@ -19,4 +20,5 @@ export type SeedComment = {
 
 export type FlattenSeedComment = Omit<SeedComment, "replies"> & {
   replies: number[] | null;
+  isReply: boolean;
 };
