@@ -7,3 +7,12 @@ export async function loadComments() {
     getMemoItem<CommentType[]>("comments") || (await seedComments());
   return comments;
 }
+
+export async function loadCommentsOnly() {
+  return (await loadComments()).filter(({ isReply }) => !isReply);
+}
+
+export async function loadReplies(ids: CommentType["replies"]) {
+  if (!ids) return null;
+  return (await loadComments()).filter(({ id }) => ids.includes(id));
+}
