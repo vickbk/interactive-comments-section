@@ -4,11 +4,12 @@ import { Article, Heading, SROnly } from "@/components/shared";
 import { useToggle } from "@/hooks";
 import { getRandomElement } from "@/libs";
 import { useCallback } from "react";
+import type { CommentType } from "../types/comment";
 import { ActionButtons } from "./action-buttons";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
-export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
+export const Comment = ({ comment: { text } }: { comment: CommentType }) => {
   const [openReply, toggleReply, replayRef] = useToggle();
   const [openUpdate, toggleUpdate, updateRef] = useToggle();
   const combinedRefs = useCallback(
@@ -34,12 +35,7 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
         </Heading>
         {!openUpdate && (
           <>
-            <p className="col-span-full">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit
-              quia reiciendis quaerat repellat! Corrupti soluta enim doloremque.
-              Fugiat commodi quasi optio, hic aliquid nulla doloremque quas ea
-              repellat sunt.
-            </p>
+            <p className="col-span-full">{text}</p>
             <Vote />
           </>
         )}
@@ -55,12 +51,12 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
             : openReply && <Editor type="reply" />}
         </div>
       </Article>
-      {hasReplies && (
+      {/* {hasReplies && (
         <section className="pl-4 border-l b-grey-100 grid gap-4">
           <Comment hasReplies={false} />
           <Comment hasReplies={false} />
         </section>
-      )}
+      )} */}
     </section>
   );
 };
