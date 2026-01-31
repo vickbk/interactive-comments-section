@@ -1,10 +1,13 @@
 import { Heading, SROnly } from "@/components/shared";
+import type { ToggleRef } from "@/hooks";
 import { User } from "../user/components/user";
 
 export const Editor = ({
   type = "comment",
+  reference,
 }: {
   type?: "comment" | "reply" | "update";
+  reference?: ToggleRef<HTMLFormElement>;
 }) => {
   const [placeholder, name] = {
     comment: ["Add a comment here", "send"],
@@ -12,7 +15,7 @@ export const Editor = ({
     update: ["Update your comment here", "update"],
   }[type];
   return (
-    <form className="white p-4 grid grid-cols-2 gap-4">
+    <form className="white p-4 grid grid-cols-2 gap-4" ref={reference}>
       {type !== "update" ? (
         <Heading>
           <SROnly>{name} as</SROnly>

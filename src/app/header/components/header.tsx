@@ -5,18 +5,11 @@ import {
   Icon,
   SROnly,
 } from "@/components/shared";
+import { useToggle } from "@/hooks";
 import { joinClasses } from "@/libs";
-import { useCallback, useState } from "react";
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
-  const outsideClose = useCallback((node: HTMLElement | null) => {
-    function closeOnBlur({ target }: PointerEvent) {
-      if (!node?.contains(target as Node)) setOpen(false);
-    }
-    window.addEventListener("click", closeOnBlur);
-    return () => window.addEventListener("click", closeOnBlur);
-  }, []);
+  const [open, setOpen, outsideClose] = useToggle();
   return (
     <HeaderElement
       ref={outsideClose}
@@ -29,7 +22,7 @@ export const Header = () => {
       <button
         className="active-button p-2 c-purple-600 rounded-lg"
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={setOpen}
       >
         Switch user <Icon name="arrow-left-right" />
       </button>

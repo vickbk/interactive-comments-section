@@ -5,14 +5,16 @@ export const ActionBtn = ({
   icon,
   color,
   srText = "post",
+  action,
 }: {
   color: string;
   text: string;
   icon: string;
   srText?: string;
+  action: () => void;
 }) => {
   return (
-    <button type="button" className={color}>
+    <button onClick={action} type="button" className={color}>
       <Icon name={icon} /> {text} <SROnly>{srText}</SROnly>
     </button>
   );
