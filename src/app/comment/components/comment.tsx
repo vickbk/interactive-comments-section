@@ -1,21 +1,23 @@
 import { Editor } from "@/app/editor";
+import { useCurrentSession } from "@/app/user";
 import { User } from "@/app/user/components/user";
 import { Article, Heading, SROnly } from "@/components/shared";
 import { useToggle } from "@/hooks";
-import { getRandomElement } from "@/libs";
 import { useCallback } from "react";
 import type { CommentType } from "../types/comment";
 import { ActionButtons } from "./action-buttons";
+import { Comments } from "./comments";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
 export const Comment = ({
-  comment: { text, uId },
+  comment: { text, uId, replies },
 }: {
   comment: CommentType;
 }) => {
   const [openReply, toggleReply, replayRef] = useToggle();
   const [openUpdate, toggleUpdate, updateRef] = useToggle();
+
   const combinedRefs = useCallback(
     (node: HTMLElement | null) => {
       replayRef.current = node;
@@ -24,7 +26,8 @@ export const Comment = ({
     [replayRef, updateRef],
   );
 
-  const isCurrentUser = getRandomElement([true, false]);
+  const { session } = useCurrentSession();
+  const isCurrentUser = session === uId;
 
   return (
     <section className="grid gap-4 background">
@@ -55,12 +58,11 @@ export const Comment = ({
             : openReply && <Editor type="reply" />}
         </div>
       </Article>
-      {/* {hasReplies && (
+      {replies && (
         <section className="pl-4 border-l b-grey-100 grid gap-4">
-          <Comment hasReplies={false} />
-          <Comment hasReplies={false} />
+          <Comments {...{ replies }} />
         </section>
-      )} */}
+      )}
     </section>
   );
 };
