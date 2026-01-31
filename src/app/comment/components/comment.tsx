@@ -24,11 +24,13 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
         </p>
         <Vote />
         <ActionButtons isCurrentUser={isCurrentUser} />
-        <div className="col-span-full">
-          <Editor type="update" />
-        </div>
+        {isCurrentUser && (
+          <div className="col-span-full">
+            <Editor type="update" />
+          </div>
+        )}
       </Article>
-      <Editor type="reply" />
+      {!isCurrentUser && <Editor type="reply" />}
       {hasReplies && (
         <section className="pl-4 border-l b-grey-100">
           <Comment hasReplies={false} />
