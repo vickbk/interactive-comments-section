@@ -1,8 +1,10 @@
-import { getRandomElement } from "@/libs";
 import { ActionBtn } from "./btn";
 
-export const ActionButtons = () => {
-  const isCurrentUser = getRandomElement([true, false]);
+export const ActionButtons = ({
+  isCurrentUser,
+}: {
+  isCurrentUser: boolean;
+}) => {
   return (
     <div className="flex flex-wrap gap-2 font-semibold justify-end">
       {isCurrentUser ? (

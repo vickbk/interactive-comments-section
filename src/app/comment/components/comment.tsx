@@ -1,6 +1,7 @@
 import { Editor } from "@/app/editor";
 import { User } from "@/app/user/components/user";
 import { Article, Heading, SROnly } from "@/components/shared";
+import { getRandomElement } from "@/libs";
 import { ActionButtons } from "./action-buttons";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
@@ -21,7 +22,7 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
           repellat sunt.
         </p>
         <Vote />
-        <ActionButtons />
+        <ActionButtons isCurrentUser={getRandomElement([true, false])} />
         <div className="col-span-full">
           <Editor type="update" />
         </div>
