@@ -1,19 +1,36 @@
-import { Heading, Section, SROnly } from "@/components/shared";
+import { Heading, SROnly } from "@/components/shared";
 import { User } from "../user/components/user";
 
-export const Editor = () => {
+export const Editor = ({
+  type = "comment",
+}: {
+  type?: "comment" | "reply" | "update";
+}) => {
+  const [placeholder, name] = {
+    comment: ["Add a comment here", "send"],
+    reply: ["Add a reply here", "reply"],
+    update: ["Update your comment here", "update"],
+  }[type];
   return (
-    <Section>
+    <form className="white p-4 grid grid-cols-2 gap-4">
       <Heading>
-        <SROnly>Comment as</SROnly>
+        <SROnly>{name} as</SROnly>
         <User />
       </Heading>
-      <form>
-        <label>
-          <textarea name="comment" placeholder="Your comment here"></textarea>
-        </label>
-        <button type="submit">Comment</button>
-      </form>
-    </Section>
+      <label className="col-span-full row-start-1">
+        <textarea
+          className="w-full resize-none outline p-4 rounded-lg out-grey-100 active-out-purple-600"
+          name="comment"
+          placeholder={placeholder + "..."}
+          rows={4}
+        ></textarea>
+      </label>
+      <button
+        className="purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end"
+        type="submit"
+      >
+        {name}
+      </button>
+    </form>
   );
 };

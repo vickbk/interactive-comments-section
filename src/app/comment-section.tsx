@@ -7,7 +7,9 @@ export const CommentSection = () => {
     <>
       <Header />
       <Comments />
-      <Editor />
+      <div className="sticky bottom-4">
+        <Editor />
+      </div>
     </>
   );
 };
