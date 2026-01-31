@@ -7,6 +7,7 @@ import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
 export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
+  const isCurrentUser = getRandomElement([true, false]);
   return (
     <section className="grid gap-4 background">
       <Article className="white p-4 rounded-lg grid grid-cols-2 gap-4 items-center">
@@ -22,7 +23,7 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
           repellat sunt.
         </p>
         <Vote />
-        <ActionButtons isCurrentUser={getRandomElement([true, false])} />
+        <ActionButtons isCurrentUser={isCurrentUser} />
         <div className="col-span-full">
           <Editor type="update" />
         </div>

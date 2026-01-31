@@ -13,10 +13,14 @@ export const Editor = ({
   }[type];
   return (
     <form className="white p-4 grid grid-cols-2 gap-4">
-      <Heading>
-        <SROnly>{name} as</SROnly>
-        <User />
-      </Heading>
+      {type !== "update" ? (
+        <Heading>
+          <SROnly>{name} as</SROnly>
+          <User />
+        </Heading>
+      ) : (
+        <div></div>
+      )}
       <label className="col-span-full row-start-1">
         <textarea
           className="w-full resize-none outline p-4 rounded-lg out-grey-100 active-out-purple-600"

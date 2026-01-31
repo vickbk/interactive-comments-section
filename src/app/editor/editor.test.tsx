@@ -6,4 +6,8 @@ describe("Editor", () => {
     render(<Editor />);
     expect(await screen.findByPlaceholderText(/a comment/)).toBeVisible();
   });
+  test("should render without the user icon if type set to update", async () => {
+    render(<Editor type="update" />);
+    expect(await screen.queryByText(/update as/i)).toBeNull();
+  });
 });
