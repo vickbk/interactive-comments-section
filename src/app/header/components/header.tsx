@@ -43,7 +43,7 @@ export const Header = () => {
         </li>
         <li>
           <button
-            className="purple-600 c-background p-2 rounded-lg self-center"
+            className="active-button purple-600 c-background p-2 rounded-lg self-center"
             type="button"
           >
             {" "}
