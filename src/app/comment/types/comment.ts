@@ -5,6 +5,8 @@ export type CommentType = {
   text: string;
   replies?: CommentType["id"][] | null;
   createdAt: EpochTimeStamp;
+  upVotes?: UserType["id"][];
+  downVotes?: UserType["id"][];
   uId: UserType["id"];
   isReply: boolean;
 };

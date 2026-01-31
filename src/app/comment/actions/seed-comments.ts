@@ -1,4 +1,4 @@
-import { getUserByName } from "@/app/user/actions/load-users";
+import { getUserByName } from "@/app/user";
 import { default as data } from "@/assets/data.json";
 import { getMemoItem, getRandomInt, setMemoItem } from "@/libs";
 import type {

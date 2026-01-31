@@ -1,5 +1,9 @@
-export { loadComments } from "./actions/load-comments";
-export { flatComments } from "./actions/seed-comments";
+export {
+  loadComments,
+  loadCommentsOnly,
+  loadReplies,
+} from "./actions/load-comments";
+export { flatComments, seedComments } from "./actions/seed-comments";
 export { ActionButtons } from "./components/action-buttons";
 export { ActionBtn as Button } from "./components/btn";
 export { Comment } from "./components/comment";
