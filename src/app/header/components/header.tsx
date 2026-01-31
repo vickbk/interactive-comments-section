@@ -1,4 +1,4 @@
-import { CurrentUser, User } from "@/app/user";
+import { useCurrentSession, User } from "@/app/user";
 import {
   Header as HeaderElement,
   Heading,
@@ -6,10 +6,11 @@ import {
   SROnly,
 } from "@/components/shared";
 import { useToggle } from "@/hooks";
-import { joinClasses } from "@/libs";
+import { UserSwitch } from "./user-switch";
 
 export const Header = () => {
   const [open, setOpen, outsideClose] = useToggle();
+  const { session } = useCurrentSession();
   return (
     <HeaderElement
       ref={outsideClose}
@@ -17,7 +18,7 @@ export const Header = () => {
     >
       <Heading>
         <SROnly>Currently logged in as </SROnly>
-        <CurrentUser />
+        <User id={session!} />
       </Heading>
       <button
         className="active-button p-2 c-purple-600 rounded-lg"
@@ -26,31 +27,7 @@ export const Header = () => {
       >
         Switch user <Icon name="arrow-left-right" />
       </button>
-      <ul
-        className={joinClasses([
-          "absolute top-[calc(100%+var(--spacing)*4)] right-0 white p-4 flex flex-col gap-4 rounded-lg",
-          !open && "hidden",
-        ])}
-      >
-        <li>
-          <User showName />
-        </li>
-        <li>
-          <User showName />
-        </li>
-        <li>
-          <User showName />
-        </li>
-        <li>
-          <button
-            className="active-button purple-600 c-background p-2 rounded-lg self-center"
-            type="button"
-          >
-            {" "}
-            <Icon name="person-add" /> Add account
-          </button>
-        </li>
-      </ul>
+      <UserSwitch {...{ open }} />
     </HeaderElement>
   );
 };

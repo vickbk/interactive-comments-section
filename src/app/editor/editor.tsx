@@ -1,5 +1,6 @@
 import { Heading, SROnly } from "@/components/shared";
 import type { ToggleRef } from "@/hooks";
+import { useCurrentSession } from "../user";
 import { User } from "../user/components/user";
 
 export const Editor = ({
@@ -9,17 +10,20 @@ export const Editor = ({
   type?: "comment" | "reply" | "update";
   reference?: ToggleRef<HTMLFormElement>;
 }) => {
+  const { session } = useCurrentSession();
+
   const [placeholder, name] = {
     comment: ["Add a comment", "send"],
     reply: ["Add a reply", "reply"],
     update: ["Update your comment", "update"],
   }[type];
+
   return (
     <form className="white p-4 grid grid-cols-2 gap-4" ref={reference}>
       {type !== "update" ? (
         <Heading>
           <SROnly>{name} as</SROnly>
-          <User />
+          <User id={session!} />
         </Heading>
       ) : (
         <div></div>
