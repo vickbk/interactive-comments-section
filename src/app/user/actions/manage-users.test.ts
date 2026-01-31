@@ -1,4 +1,9 @@
-import { getUserById, getUserByName, loadUsers } from "./load-users";
+import {
+  getCurrentSession,
+  getUserById,
+  getUserByName,
+  loadUsers,
+} from "./manage-users";
 
 describe("Load users", () => {
   test("should load an array of users", async () => {
@@ -32,5 +37,10 @@ describe("Load users", () => {
   test("should return null if not found", async () => {
     const user = await getUserById("not-defined");
     expect(user).toBeNull();
+  });
+  test("should return a session", async () => {
+    const session = await getCurrentSession();
+    expect(session).toBeTruthy();
+    expect(session?.length).not.toBe(0);
   });
 });

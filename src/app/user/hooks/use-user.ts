@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserById } from "../actions/load-users";
+import { getUserById } from "../actions/manage-users";
 import type { UserType } from "../types/user";
 
 export function useUser(id: UserType["id"]) {
