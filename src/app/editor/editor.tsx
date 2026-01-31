@@ -10,9 +10,9 @@ export const Editor = ({
   reference?: ToggleRef<HTMLFormElement>;
 }) => {
   const [placeholder, name] = {
-    comment: ["Add a comment here", "send"],
-    reply: ["Add a reply here", "reply"],
-    update: ["Update your comment here", "update"],
+    comment: ["Add a comment", "send"],
+    reply: ["Add a reply", "reply"],
+    update: ["Update your comment", "update"],
   }[type];
   return (
     <form className="white p-4 grid grid-cols-2 gap-4" ref={reference}>

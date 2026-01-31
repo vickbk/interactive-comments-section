@@ -56,7 +56,7 @@ export const Comment = ({ hasReplies = true }: { hasReplies?: boolean }) => {
         </div>
       </Article>
       {hasReplies && (
-        <section className="pl-4 border-l b-grey-100">
+        <section className="pl-4 border-l b-grey-100 grid gap-4">
           <Comment hasReplies={false} />
           <Comment hasReplies={false} />
         </section>
