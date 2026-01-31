@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 export const CurrentSession = createContext<{
   session: string | null;
-  setSession: React.Dispatch<React.SetStateAction<string | null>>;
+  setSession: (id: string) => void;
 } | null>(null);
 
 export function useCurrentSession() {

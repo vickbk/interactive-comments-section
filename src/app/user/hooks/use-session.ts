@@ -5,7 +5,7 @@ import type { UserType } from "../types/user";
 export function useSession() {
   const [session, setThisSession] = useState<UserType["id"] | null>(null);
 
-  const updateSession = useCallback(async (id: UserType["id"]) => {
+  const updateSession = useCallback((id: UserType["id"]) => {
     setThisSession(id);
     setSession(id);
   }, []);
