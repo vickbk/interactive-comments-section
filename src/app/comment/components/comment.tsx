@@ -9,7 +9,11 @@ import { ActionButtons } from "./action-buttons";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
-export const Comment = ({ comment: { text } }: { comment: CommentType }) => {
+export const Comment = ({
+  comment: { text, uId },
+}: {
+  comment: CommentType;
+}) => {
   const [openReply, toggleReply, replayRef] = useToggle();
   const [openUpdate, toggleUpdate, updateRef] = useToggle();
   const combinedRefs = useCallback(
@@ -30,7 +34,7 @@ export const Comment = ({ comment: { text } }: { comment: CommentType }) => {
       >
         <Heading className="flex gap-4 col-span-full items-center">
           <SROnly>A comment by </SROnly>
-          <User showName />
+          <User id={uId} showName />
           <TimeDisplay />
         </Heading>
         {!openUpdate && (
