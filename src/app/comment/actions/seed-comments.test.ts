@@ -5,6 +5,12 @@ describe("Seed Comments", () => {
     const comments = await seedComments();
     expect(comments instanceof Array).toBe(true);
   });
+
+  test("should not duplicate data if called multiple times", async () => {
+    const firstSeed = await seedComments();
+    const secondSeed = await seedComments();
+    expect(firstSeed).toEqual(secondSeed);
+  });
 });
 
 describe("flat comments", () => {

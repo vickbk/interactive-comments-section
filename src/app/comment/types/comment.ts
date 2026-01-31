@@ -1,9 +1,11 @@
-import type { SeedUser } from "@/app/user";
+import type { SeedUser, UserType } from "@/app/user";
 
 export type CommentType = {
-  id: string;
+  id: string | number;
   text: string;
-  replies: string[];
+  replies?: CommentType["id"][] | null;
+  createdAt: EpochTimeStamp;
+  uId: UserType["id"];
 };
 
 export type SeedComment = {

@@ -1,9 +1,9 @@
 import { getMemoItem } from "@/libs";
 import type { CommentType } from "../types/comment";
+import { seedComments } from "./seed-comments";
 
 export async function loadComments() {
-  return await new Promise((resolve) => {
-    const comments = getMemoItem<CommentType[]>("comments");
-    resolve(comments);
-  });
+  const comments =
+    getMemoItem<CommentType[]>("comments") || (await seedComments());
+  return comments;
 }
