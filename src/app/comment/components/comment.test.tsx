@@ -14,4 +14,18 @@ describe("Comment component", () => {
     render(<Comment comment={comments[0]} />);
     expect(await screen.findByText(/this is you/i)).toBeVisible();
   });
+
+  test("should present correctly a comment to screen readers", async () => {
+    const comments = await loadComments();
+    const comment = comments.find(({ isReply }) => !isReply)!;
+    render(<Comment comment={{ ...comment, replies: null }} />);
+    expect(await screen.findByText(/a comment by/i)).toBeVisible();
+  });
+
+  test("should present correctly a reply to screen readers", async () => {
+    const comments = await loadComments();
+    const comment = comments.find(({ isReply }) => isReply)!;
+    render(<Comment comment={{ ...comment, replies: null }} />);
+    expect(await screen.findByText(/a reply by/i)).toBeVisible();
+  });
 });

@@ -11,7 +11,7 @@ import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
 export const Comment = ({
-  comment: { text, uId, replies },
+  comment: { text, uId, replies, isReply },
 }: {
   comment: CommentType;
 }) => {
@@ -36,7 +36,7 @@ export const Comment = ({
         ref={combinedRefs}
       >
         <Heading className="flex gap-4 col-span-full items-center">
-          <SROnly>A comment by </SROnly>
+          <SROnly>A {isReply ? "reply" : "comment"} by </SROnly>
           <User id={uId} showName />
           <TimeDisplay />
         </Heading>
@@ -58,7 +58,7 @@ export const Comment = ({
             : openReply && <Editor type="reply" />}
         </div>
       </Article>
-      {replies && (
+      {replies && replies.length !== 0 && (
         <section className="pl-4 border-l b-grey-100 grid gap-4">
           <Comments {...{ replies }} />
         </section>
