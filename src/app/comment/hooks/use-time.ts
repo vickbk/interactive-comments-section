@@ -23,12 +23,14 @@ export function useTime(time: EpochTimeStamp) {
     const [min, , text] = TIMESLOTS.find(
       ([min, max]) => difference >= min && difference < max,
     ) || [1, 60, "sec"];
-    const fraction = difference / min;
+
     (() => {
+      const fraction = difference / min;
       setDisplay(
         `${fraction.toFixed()} ${text}${fraction >= 2 ? "s" : ""} ago`,
       );
     })();
+
     timeoutKey.current = setTimeout(() => {
       setRefreshKey(crypto.randomUUID());
     }, min * 1000);
