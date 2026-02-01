@@ -1,13 +1,16 @@
 import { CustomDialog, Heading } from "@/components/shared";
 import { joinClasses } from "@/libs";
+import useDeleteComment from "../hooks/delete-comment";
 import type { CommentType } from "../types/comment";
 
 export const DeletePrompt = ({
   onClose,
+  comment,
 }: {
   comment: CommentType;
   onClose: () => void;
 }) => {
+  const deleteAction = useDeleteComment(comment);
   return (
     <CustomDialog
       isOpen
@@ -24,7 +27,7 @@ export const DeletePrompt = ({
       <div className="flex gap-4">
         {[
           { color: "grey-500", text: "No, Cancel", click: onClose },
-          { text: "Yes, Delete", color: "pink-400", click: () => {} },
+          { text: "Yes, Delete", color: "pink-400", click: deleteAction },
         ].map(({ text, color, click }) => (
           <button
             key={text}

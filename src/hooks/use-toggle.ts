@@ -13,7 +13,7 @@ export function useToggle(inital = false) {
   useEffect(() => {
     const node = elementRef.current;
     function closeOnBlur({ target }: PointerEvent) {
-      if (node && node.contains(target as Node)) setOpen(false);
+      if (node && !node.contains(target as Node)) setOpen(false);
     }
     window.addEventListener("click", closeOnBlur);
     return () => window.removeEventListener("click", closeOnBlur);
