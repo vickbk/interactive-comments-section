@@ -19,7 +19,10 @@ export const Editor = ({
   }[type];
 
   return (
-    <form className="white p-4 grid grid-cols-2 gap-4" ref={reference}>
+    <form
+      className="white p-4 grid grid-cols-2 gap-4 rounded-lg"
+      ref={reference}
+    >
       {type !== "update" ? (
         <Heading>
           <SROnly>{name} as</SROnly>

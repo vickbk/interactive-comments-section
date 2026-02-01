@@ -7,11 +7,11 @@ describe("Comment component", () => {
   test("should show you badge if current user", async () => {
     const session = await getCurrentSession();
     expect(session).toBeTruthy();
-    const comments = (await loadComments()).filter(
-      ({ uId }) => uId === session,
+    const [comment] = (await loadComments()).filter(
+      ({ uId }) => session === uId,
     );
-    expect(comments.length).not.toBe(0);
-    render(<Comment comment={comments[0]} />);
+    expect(comment).not.toBeNull();
+    render(<Comment comment={{ ...comment, replies: null }} />);
     expect(await screen.findByText(/this is you/i)).toBeVisible();
   });
 

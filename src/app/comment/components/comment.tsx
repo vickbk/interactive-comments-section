@@ -35,9 +35,14 @@ export const Comment = ({
         className="white p-4 rounded-lg grid grid-cols-2 gap-4 items-center"
         ref={combinedRefs}
       >
-        <Heading className="flex gap-4 col-span-full items-center">
+        <Heading className="flex flex-wrap gap-4 col-span-full items-center">
           <SROnly>A {isReply ? "reply" : "comment"} by </SROnly>
           <User id={uId} showName />
+          {isCurrentUser && (
+            <span className="purple-600 c-background px-2 self-center">
+              <SROnly>This is</SROnly> you
+            </span>
+          )}
           <TimeDisplay />
         </Heading>
         {!openUpdate && (
