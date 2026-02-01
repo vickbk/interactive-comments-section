@@ -9,7 +9,7 @@ export const VoteBtn = ({
 }) => {
   return (
     <button
-      className="p-2 c-purple-200 active-c-purple-600 active-button rounded-lg"
+      className="p-2 sm:px-4 c-purple-200 active-c-purple-600 active-button rounded-lg"
       type="button"
       onClick={action}
     >

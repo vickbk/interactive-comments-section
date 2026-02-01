@@ -3,6 +3,7 @@ import { useCurrentSession, User } from "@/app/user";
 import { Vote } from "@/app/vote";
 import { Article, Heading, SROnly } from "@/components/shared";
 import { useToggle } from "@/hooks";
+import { joinClasses } from "@/libs";
 import { useCallback } from "react";
 import type { CommentType } from "../types/comment";
 import { ActionButtons } from "./action-buttons";
@@ -30,10 +31,10 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
   return (
     <section className="grid gap-4 background">
       <Article
-        className="white p-4 rounded-lg grid grid-cols-2 gap-4 items-center"
+        className="white p-4 rounded-lg grid grid-cols-2 sm:grid-cols-[auto_auto_1fr] sm:grid-rows-[auto_auto] gap-4 items-center"
         ref={combinedRefs}
       >
-        <Heading className="flex flex-wrap gap-4 col-span-full items-center">
+        <Heading className="flex flex-wrap gap-4 col-span-full sm:col-start-2 sm:col-end-3 items-center">
           <SROnly>A {isReply ? "reply" : "comment"} by </SROnly>
           <User id={uId} showName />
           {isCurrentUser && (
@@ -45,11 +46,16 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
         </Heading>
         {!openUpdate && (
           <>
-            <p className="col-span-full">{text}</p>
+            <p className="col-span-full sm:col-start-2">{text}</p>
             <Vote comment={comment} />
           </>
         )}
-        <div className={openUpdate ? "col-span-full" : ""}>
+        <div
+          className={joinClasses([
+            openUpdate && "col-span-full",
+            "sm:col-start-3 sm:row-start-1",
+          ])}
+        >
           <ActionButtons
             isCurrentUser={isCurrentUser}
             actions={{ toggleReply, toggleUpdate, toggleDelete }}
@@ -62,7 +68,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
         </div>
       </Article>
       {replies && replies.length !== 0 && (
-        <section className="pl-4 border-l b-grey-100 grid gap-4">
+        <section className="pl-4 sm:pl-8 sm:ml-8 border-l-2 b-grey-100 grid gap-4">
           <Comments {...{ replies }} />
         </section>
       )}

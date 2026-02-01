@@ -6,9 +6,13 @@ import { VoteBtn } from "./vote-btn";
 export const Vote = ({ comment: { id } }: { comment: CommentType }) => {
   const { vote, voteLoader, upVote, downVote, voteSession } = useVote(id);
   return (
-    <Article className="justify-self-start" ref={voteLoader} key={voteSession}>
+    <Article
+      className="justify-self-start sm:row-span-full"
+      ref={voteLoader}
+      key={voteSession}
+    >
       <Heading className="sr-only">Vote for this comment</Heading>
-      <dl className="flex gap-4 c-purple-600 items-center background rounded-lg">
+      <dl className="flex sm:flex-col gap-4 c-purple-600 items-center background rounded-lg">
         <dt className="sr-only">Up vote</dt>
         <dd>
           <VoteBtn action={upVote} />

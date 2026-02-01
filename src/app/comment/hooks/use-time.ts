@@ -26,9 +26,7 @@ export function useTime(time: EpochTimeStamp) {
 
     (() => {
       const fraction = difference / min;
-      setDisplay(
-        `${fraction.toFixed()} ${text}${fraction >= 2 ? "s" : ""} ago`,
-      );
+      setDisplay(`${fraction.toFixed()} ${text}${fraction > 1 ? "s" : ""} ago`);
     })();
 
     timeoutKey.current = setTimeout(() => {
