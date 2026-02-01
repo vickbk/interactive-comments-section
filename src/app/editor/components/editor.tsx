@@ -2,12 +2,14 @@ import { Heading, SROnly } from "@/components/shared";
 import type { CommentType } from "../../comment";
 import { useCurrentSession } from "../../user";
 import { User } from "../../user/components/user";
+import { useSaveComment } from "../hooks/use-save-comment";
+import type { EditorType } from "../types/editor";
 
 export const Editor = ({
   type = "comment",
   comment,
 }: {
-  type?: "comment" | "reply" | "update";
+  type?: EditorType;
   comment?: CommentType;
 }) => {
   const { session } = useCurrentSession();
@@ -18,8 +20,12 @@ export const Editor = ({
     update: ["Update your comment", "update"],
   }[type];
 
+  const [, action, status] = useSaveComment({ type, comment });
   return (
-    <form className="white p-4 grid grid-cols-2 gap-4 rounded-lg">
+    <form
+      action={action}
+      className="white p-4 grid grid-cols-2 gap-4 rounded-lg"
+    >
       {type !== "update" ? (
         <Heading>
           <SROnly>{name} as</SROnly>
@@ -41,6 +47,7 @@ export const Editor = ({
       <button
         className="purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end"
         type="submit"
+        disabled={status}
       >
         {name}
       </button>
