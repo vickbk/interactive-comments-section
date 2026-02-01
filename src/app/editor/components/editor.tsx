@@ -24,7 +24,7 @@ export const Editor = ({
   return (
     <form
       action={action}
-      className="white p-4 grid grid-cols-2 sm:grid-cols-[auto_1fr_auto] gap-4 rounded-lg"
+      className="white p-4 md:p-6 grid grid-cols-2 sm:grid-cols-[auto_1fr_auto] gap-4 md:gap-6 rounded-lg"
     >
       {type !== "update" ? (
         <Heading>

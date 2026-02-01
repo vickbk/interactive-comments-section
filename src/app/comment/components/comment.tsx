@@ -29,9 +29,9 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
   const isCurrentUser = session === uId;
 
   return (
-    <section className="grid gap-4 background">
+    <section className="grid gap-4 md:gap-6 background">
       <Article
-        className="white p-4 rounded-lg grid grid-cols-2 sm:grid-cols-[auto_auto_1fr] sm:grid-rows-[auto_auto] gap-4 items-center"
+        className="white p-4 md:p-6 rounded-lg grid grid-cols-2 sm:grid-cols-[auto_auto_1fr] sm:grid-rows-[auto_auto] gap-4 md:gap-6 items-center"
         ref={combinedRefs}
       >
         <Heading className="flex flex-wrap gap-4 col-span-full sm:col-start-2 sm:col-end-3 items-center">
