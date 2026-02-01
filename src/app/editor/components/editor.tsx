@@ -1,7 +1,7 @@
+import type { CommentType } from "@/app/comment";
+import { useCurrentSession, User } from "@/app/user";
 import { Heading, SROnly } from "@/components/shared";
-import type { CommentType } from "../../comment";
-import { useCurrentSession } from "../../user";
-import { User } from "../../user/components/user";
+import { joinClasses } from "@/libs";
 import { useSaveComment } from "../hooks/use-save-comment";
 import type { EditorType } from "../types/editor";
 
@@ -24,7 +24,7 @@ export const Editor = ({
   return (
     <form
       action={action}
-      className="white p-4 grid grid-cols-2 gap-4 rounded-lg"
+      className="white p-4 grid grid-cols-2 sm:grid-cols-[auto_1fr_auto] gap-4 rounded-lg"
     >
       {type !== "update" ? (
         <Heading>
@@ -34,7 +34,12 @@ export const Editor = ({
       ) : (
         <div></div>
       )}
-      <label className="col-span-full row-start-1">
+      <label
+        className={joinClasses([
+          "col-span-full row-start-1",
+          type !== "update" && "sm:col-start-2 sm:col-end-3",
+        ])}
+      >
         <textarea
           className="w-full resize-none outline p-4 rounded-lg out-grey-100 active-out-purple-600"
           name="comment"
@@ -44,7 +49,10 @@ export const Editor = ({
         />
       </label>
       <button
-        className="purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end"
+        className={joinClasses([
+          "purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end",
+          type !== "update" ? "sm:place-self-start" : "sm:col-start-3",
+        ])}
         type="submit"
         disabled={status}
       >
