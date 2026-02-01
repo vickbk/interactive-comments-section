@@ -1,14 +1,16 @@
 import { Heading, SROnly } from "@/components/shared";
-import type { ToggleRef } from "@/hooks";
-import { useCurrentSession } from "../user";
-import { User } from "../user/components/user";
+import type { CommentType } from "../../comment";
+import { useCurrentSession } from "../../user";
+import { User } from "../../user/components/user";
+import { useSaveComment } from "../hooks/use-save-comment";
+import type { EditorType } from "../types/editor";
 
 export const Editor = ({
   type = "comment",
-  reference,
+  comment,
 }: {
-  type?: "comment" | "reply" | "update";
-  reference?: ToggleRef<HTMLFormElement>;
+  type?: EditorType;
+  comment?: CommentType;
 }) => {
   const { session } = useCurrentSession();
 
@@ -18,8 +20,12 @@ export const Editor = ({
     update: ["Update your comment", "update"],
   }[type];
 
+  const [action, status] = useSaveComment({ type, comment });
   return (
-    <form className="white p-4 grid grid-cols-2 gap-4" ref={reference}>
+    <form
+      action={action}
+      className="white p-4 grid grid-cols-2 gap-4 rounded-lg"
+    >
       {type !== "update" ? (
         <Heading>
           <SROnly>{name} as</SROnly>
@@ -34,11 +40,13 @@ export const Editor = ({
           name="comment"
           placeholder={placeholder + "..."}
           rows={4}
-        ></textarea>
+          defaultValue={type === "update" ? comment?.text : ""}
+        />
       </label>
       <button
         className="purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end"
         type="submit"
+        disabled={status}
       >
         {name}
       </button>

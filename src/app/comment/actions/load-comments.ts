@@ -16,3 +16,7 @@ export async function loadReplies(ids: CommentType["replies"]) {
   if (!ids) return null;
   return (await loadComments()).filter(({ id }) => ids.includes(id));
 }
+
+export async function loadCommentById(id: CommentType["id"]) {
+  return (await loadComments()).find((comment) => comment.id === id);
+}

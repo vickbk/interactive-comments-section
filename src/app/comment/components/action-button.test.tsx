@@ -2,7 +2,11 @@ import { render, screen } from "@testing-library/react";
 import { ActionButtons } from "./action-buttons";
 
 describe("Action Button tests", () => {
-  const actions = { toggleReply: () => {}, toggleUpdate: () => {} };
+  const actions = {
+    toggleReply: () => {},
+    toggleUpdate: () => {},
+    toggleDelete: () => {},
+  };
   test("should show reply button if not current user", async () => {
     render(<ActionButtons actions={actions} isCurrentUser={false} />);
     expect(await screen.findByText(/reply/i)).toBeVisible();

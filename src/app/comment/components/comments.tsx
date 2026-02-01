@@ -6,7 +6,7 @@ import { CommentPlaceHolder } from "./comment-placeholder";
 export const Comments = ({ replies }: { replies?: CommentType["replies"] }) => {
   const { comments } = useComment(replies);
   return (
-    <div className="grid gap-4 mb-8">
+    <div className="grid gap-4">
       {!comments
         ? [null, null, null].map((_, key) => <CommentPlaceHolder key={key} />)
         : comments.map((comment) => (
