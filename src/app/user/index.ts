@@ -6,7 +6,6 @@ export {
   setSession,
 } from "./actions/manage-users";
 export { seedUsers } from "./actions/seed-users";
-export { CurrentUser } from "./components/current-user";
 export { User } from "./components/user";
 export { CurrentSession, useCurrentSession } from "./hooks/session-context";
 export { useSession } from "./hooks/use-session";
