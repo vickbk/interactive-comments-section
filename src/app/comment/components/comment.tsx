@@ -1,6 +1,7 @@
 import { Editor } from "@/app/editor";
 import { useCurrentSession } from "@/app/user";
 import { User } from "@/app/user/components/user";
+import { Vote } from "@/app/vote";
 import { Article, Heading, SROnly } from "@/components/shared";
 import { useToggle } from "@/hooks";
 import { useCallback } from "react";
@@ -9,7 +10,6 @@ import { ActionButtons } from "./action-buttons";
 import { Comments } from "./comments";
 import { DeletePrompt } from "./delete-prompt";
 import { TimeDisplay } from "./time-display";
-import { Vote } from "./vote";
 
 export const Comment = ({ comment }: { comment: CommentType }) => {
   const { text, uId, replies, isReply } = comment;
