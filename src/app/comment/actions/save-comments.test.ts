@@ -47,4 +47,15 @@ describe("Save Comments", () => {
 
     expect(await loadCommentById(id)).toBeUndefined();
   });
+
+  test("should delete a reply with all its references", async () => {
+    const oldComments = await loadComments();
+    const { id } = oldComments.reverse().find((r) => r.isReply)!;
+    expect(id).toBeTruthy();
+    await deleteComment(id);
+    const references = (await loadComments()).filter((comment) =>
+      comment.replies?.includes(id),
+    );
+    expect(references.length).toBe(0);
+  });
 });

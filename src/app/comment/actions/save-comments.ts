@@ -60,6 +60,12 @@ export async function saveCommentUpdate({
 export async function deleteComment(id: CommentType["id"]) {
   setMemoItem(
     "comments",
-    (await loadComments()).filter((comment) => comment.id !== id),
+    (await loadComments())
+      .map((comment) => {
+        return comment.replies?.includes(id)
+          ? { ...comment, replies: comment.replies.filter((cId) => cId !== id) }
+          : comment;
+      })
+      .filter((comment) => comment.id !== id),
   );
 }

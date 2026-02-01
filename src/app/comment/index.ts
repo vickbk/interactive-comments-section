@@ -1,4 +1,12 @@
 export {
+  deleteComment,
+  saveComment,
+  saveCommentUpdate,
+  saveReply,
+} from "./actions/save-comments";
+
+export {
+  loadCommentById,
   loadComments,
   loadCommentsOnly,
   loadReplies,
