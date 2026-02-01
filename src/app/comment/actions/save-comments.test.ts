@@ -1,5 +1,10 @@
 import { loadCommentById, loadComments } from "./load-comments";
-import { saveComment, saveCommentUpdate, saveReply } from "./save-comments";
+import {
+  deleteComment,
+  saveComment,
+  saveCommentUpdate,
+  saveReply,
+} from "./save-comments";
 
 describe("Save Comments", () => {
   test("should save a comment", async () => {
@@ -32,6 +37,14 @@ describe("Save Comments", () => {
     });
     const updated = await loadCommentById(comment.id);
     expect(updated).toBeTruthy();
-    expect(comment.text).not.toEqual(updated?.text);
+    expect(comment.text).not.toEqual(updated!.text);
+  });
+
+  test("should delete a comment", async () => {
+    const oldComments = await loadComments();
+    const { id } = oldComments.at(-1)!;
+    await deleteComment(id);
+
+    expect(await loadCommentById(id)).toBeUndefined();
   });
 });

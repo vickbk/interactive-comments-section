@@ -48,10 +48,18 @@ export async function saveCommentUpdate({
   comment: string;
   reference: CommentType["id"];
 }) {
-  const comments = (await loadComments()).map((comment) =>
-    comment.id === reference ? { ...comment, text } : comment,
+  setMemoItem(
+    "comments",
+    (await loadComments()).map((comment) =>
+      comment.id === reference ? { ...comment, text } : comment,
+    ),
   );
-
-  setMemoItem("comments", comments);
   return null;
+}
+
+export async function deleteComment(id: CommentType["id"]) {
+  setMemoItem(
+    "comments",
+    (await loadComments()).filter((comment) => comment.id !== id),
+  );
 }
