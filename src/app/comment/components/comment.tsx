@@ -10,11 +10,8 @@ import { Comments } from "./comments";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
-export const Comment = ({
-  comment: { text, uId, replies, isReply },
-}: {
-  comment: CommentType;
-}) => {
+export const Comment = ({ comment }: { comment: CommentType }) => {
+  const { text, uId, replies, isReply } = comment;
   const [openReply, toggleReply, replayRef] = useToggle();
   const [openUpdate, toggleUpdate, updateRef] = useToggle();
 
@@ -59,8 +56,8 @@ export const Comment = ({
         </div>
         <div className="col-span-full">
           {isCurrentUser
-            ? openUpdate && <Editor type="update" />
-            : openReply && <Editor type="reply" />}
+            ? openUpdate && <Editor type="update" comment={comment} />
+            : openReply && <Editor type="reply" comment={comment} />}
         </div>
       </Article>
       {replies && replies.length !== 0 && (
