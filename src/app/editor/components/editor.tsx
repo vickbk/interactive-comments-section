@@ -1,7 +1,7 @@
 import { Heading, SROnly } from "@/components/shared";
-import type { CommentType } from "../comment";
-import { useCurrentSession } from "../user";
-import { User } from "../user/components/user";
+import type { CommentType } from "../../comment";
+import { useCurrentSession } from "../../user";
+import { User } from "../../user/components/user";
 
 export const Editor = ({
   type = "comment",
@@ -35,7 +35,7 @@ export const Editor = ({
           placeholder={placeholder + "..."}
           rows={4}
         >
-          {type === "update" && comment?.text}
+          {type === "update" ? comment?.text : ""}
         </textarea>
       </label>
       <button

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { loadComments } from "../comment";
+import { loadComments } from "../../comment";
 import { Editor } from "./editor";
 
 describe("Editor", () => {
