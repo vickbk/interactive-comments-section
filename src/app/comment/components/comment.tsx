@@ -41,7 +41,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
               <SROnly>This is</SROnly> you
             </span>
           )}
-          <TimeDisplay />
+          <TimeDisplay time={comment.createdAt} />
         </Heading>
         {!openUpdate && (
           <>
