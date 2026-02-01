@@ -46,7 +46,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
         {!openUpdate && (
           <>
             <p className="col-span-full">{text}</p>
-            <Vote />
+            <Vote comment={comment} />
           </>
         )}
         <div className={openUpdate ? "col-span-full" : ""}>
