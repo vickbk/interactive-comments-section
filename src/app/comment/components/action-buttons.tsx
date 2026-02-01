@@ -3,17 +3,20 @@ import { ActionBtn } from "./btn";
 
 export const ActionButtons = ({
   isCurrentUser,
-  actions: { toggleReply, toggleUpdate },
+  actions: { toggleReply, toggleUpdate, toggleDelete },
 }: {
   isCurrentUser: boolean;
-  actions: Record<"toggleUpdate" | "toggleReply", ToggleTrigger>;
+  actions: Record<
+    "toggleUpdate" | "toggleReply" | "toggleDelete",
+    ToggleTrigger
+  >;
 }) => {
   return (
     <div className="flex flex-wrap gap-2 font-semibold justify-end">
       {isCurrentUser ? (
         <>
           <ActionBtn
-            action={() => {}}
+            action={toggleDelete}
             color="c-pink-400 active-c-pink-200"
             text="Delete"
             icon="trash-fill"

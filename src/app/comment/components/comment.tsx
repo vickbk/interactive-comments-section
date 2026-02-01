@@ -7,6 +7,7 @@ import { useCallback } from "react";
 import type { CommentType } from "../types/comment";
 import { ActionButtons } from "./action-buttons";
 import { Comments } from "./comments";
+import { DeletePrompt } from "./delete-prompt";
 import { TimeDisplay } from "./time-display";
 import { Vote } from "./vote";
 
@@ -14,6 +15,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
   const { text, uId, replies, isReply } = comment;
   const [openReply, toggleReply, replayRef] = useToggle();
   const [openUpdate, toggleUpdate, updateRef] = useToggle();
+  const [showDelete, toggleDelete] = useToggle();
 
   const combinedRefs = useCallback(
     (node: HTMLElement | null) => {
@@ -51,7 +53,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
         <div className={openUpdate ? "col-span-full" : ""}>
           <ActionButtons
             isCurrentUser={isCurrentUser}
-            actions={{ toggleReply, toggleUpdate }}
+            actions={{ toggleReply, toggleUpdate, toggleDelete }}
           />
         </div>
         <div className="col-span-full">
@@ -65,6 +67,7 @@ export const Comment = ({ comment }: { comment: CommentType }) => {
           <Comments {...{ replies }} />
         </section>
       )}
+      {showDelete && <DeletePrompt onClose={toggleDelete} comment={comment} />}
     </section>
   );
 };
