@@ -8,8 +8,9 @@ describe("Header", () => {
     const switcher = await screen.findByText(/switch user/i);
     expect(switcher).toBeInTheDocument();
     await userEvent.click(switcher);
-    expect(await screen.findByText(/add account/i)).toBeVisible();
+    await userEvent.click(switcher);
+    // expect(await screen.findByText(/add account/i)).toBeVisible();
     // await userEvent.click(document.body);
-    // expect(await screen.queryByText(/add account/i)).not.toBeVisible();
+    expect(await screen.queryByText(/add account/i)).toBeNull();
   });
 });

@@ -8,10 +8,10 @@ import "./styles/scss/global.scss";
 function App() {
   return (
     <ContextProvider>
-      <Main>
+      <Main pageHasH1={false} className="mx-auto">
         <Heading className="sr-only">Interactive comment section</Heading>
+        <CommentSection />
       </Main>
-      <CommentSection />
     </ContextProvider>
   );
 }

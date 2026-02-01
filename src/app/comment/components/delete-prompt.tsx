@@ -15,7 +15,7 @@ export const DeletePrompt = ({
     <CustomDialog
       isOpen
       onClose={onClose}
-      className="m-auto white p-8 grid gap-y-4 c-grey-500 rounded-2xl"
+      className="m-auto white p-8 grid gap-y-4 c-grey-500 rounded-2xl max-w-120"
     >
       <Heading className="text-3xl font-semibold c-grey-800">
         Delete Comment
