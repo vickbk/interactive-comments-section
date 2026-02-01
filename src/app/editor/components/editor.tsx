@@ -20,7 +20,7 @@ export const Editor = ({
     update: ["Update your comment", "update"],
   }[type];
 
-  const [, action, status] = useSaveComment({ type, comment });
+  const [action, status] = useSaveComment({ type, comment });
   return (
     <form
       action={action}
@@ -40,9 +40,8 @@ export const Editor = ({
           name="comment"
           placeholder={placeholder + "..."}
           rows={4}
-        >
-          {type === "update" ? comment?.text : ""}
-        </textarea>
+          defaultValue={type === "update" ? comment?.text : ""}
+        />
       </label>
       <button
         className="purple-600 c-white p-2 px-4 uppercase active-button rounded-lg place-self-end"

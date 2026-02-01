@@ -3,12 +3,10 @@ import type { ActionParams } from "../types/editor";
 
 export async function saveAction({ comment }: ActionParams) {
   await saveComment(comment);
-  return true;
 }
 
 export async function updateAction({ comment, reference }: ActionParams) {
   await saveCommentUpdate({ comment, reference: reference! });
-  return true;
 }
 
 export async function replyAction({ comment, reference }: ActionParams) {

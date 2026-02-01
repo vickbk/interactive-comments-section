@@ -3,7 +3,14 @@ import { createContext, useContext } from "react";
 export const CurrentSession = createContext<{
   session: string | null;
   setSession: (id: string) => void;
-}>({ session: "", setSession: () => {} });
+  pageSession: string;
+  updatePageSession: () => void;
+}>({
+  session: "",
+  setSession: () => {},
+  pageSession: "",
+  updatePageSession: () => {},
+});
 
 export function useCurrentSession() {
   const theSession = useContext(CurrentSession);
