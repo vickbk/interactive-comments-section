@@ -1,6 +1,5 @@
 import { Editor } from "@/app/editor";
-import { useCurrentSession } from "@/app/user";
-import { User } from "@/app/user/components/user";
+import { useCurrentSession, User } from "@/app/user";
 import { Vote } from "@/app/vote";
 import { Article, Heading, SROnly } from "@/components/shared";
 import { useToggle } from "@/hooks";
