@@ -5,11 +5,11 @@ import { useAccountSwitch } from "../hooks/use-account-switch";
 
 export const UserSwitch = ({ open }: { open: boolean }) => {
   const { accounts } = useAccountSwitch();
-  const { setSession } = useCurrentSession();
+  const { setSession, session } = useCurrentSession();
   return (
     <ul
       className={joinClasses([
-        "absolute top-[calc(100%+var(--spacing)*4)] right-0 white p-4 flex flex-col gap-4 rounded-lg",
+        "absolute top-[calc(100%+var(--spacing)*4)] right-0 white shadow-2xl z-10 p-4 flex flex-col gap-4 rounded-lg",
         !open && "hidden",
       ])}
     >
@@ -17,7 +17,10 @@ export const UserSwitch = ({ open }: { open: boolean }) => {
         <li key={id}>
           <button
             onClick={() => setSession(id)}
-            className="active-button outline-0 w-full"
+            className={joinClasses([
+              session === id && "outline-2 out-purple-600 outline-dashed",
+              "active-button outline-0 w-full p-2 rounded-lg",
+            ])}
             type="button"
           >
             <User id={id} showName />
