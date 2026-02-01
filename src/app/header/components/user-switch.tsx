@@ -1,5 +1,4 @@
 import { useCurrentSession, User } from "@/app/user";
-import { Icon } from "@/components/shared";
 import { joinClasses } from "@/libs";
 import { useAccountSwitch } from "../hooks/use-account-switch";
 
@@ -27,16 +26,6 @@ export const UserSwitch = ({ open }: { open: boolean }) => {
           </button>
         </li>
       ))}
-
-      <li>
-        <button
-          className="active-button purple-600 c-background p-2 rounded-lg self-center w-full"
-          type="button"
-        >
-          {" "}
-          <Icon name="person-add" /> Add account
-        </button>
-      </li>
     </ul>
   );
 };
