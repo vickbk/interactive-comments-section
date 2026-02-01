@@ -40,3 +40,18 @@ export async function saveReply({
   setMemoItem("comments", comments);
   return null;
 }
+
+export async function saveCommentUpdate({
+  comment: text,
+  reference,
+}: {
+  comment: string;
+  reference: CommentType["id"];
+}) {
+  const comments = (await loadComments()).map((comment) =>
+    comment.id === reference ? { ...comment, text } : comment,
+  );
+
+  setMemoItem("comments", comments);
+  return null;
+}

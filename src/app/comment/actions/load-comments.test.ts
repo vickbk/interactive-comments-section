@@ -1,4 +1,9 @@
-import { loadComments, loadCommentsOnly, loadReplies } from "./load-comments";
+import {
+  loadCommentById,
+  loadComments,
+  loadCommentsOnly,
+  loadReplies,
+} from "./load-comments";
 
 describe("Comments loading", () => {
   test("should return an array of comments", async () => {
@@ -15,5 +20,12 @@ describe("Comments loading", () => {
   test("should return related comments only", async () => {
     const replies = await loadReplies([1, 2, 3]);
     expect(replies?.length).toBe(3);
+  });
+
+  test("should load a comment by its id", async () => {
+    const [{ id }] = await loadComments();
+    const loaded = await loadCommentById(id);
+    expect(id).toBe(loaded?.id);
+    expect(await loadCommentById("never-ever")).toBeUndefined();
   });
 });

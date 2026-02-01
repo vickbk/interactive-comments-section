@@ -1,5 +1,5 @@
-import { loadComments } from "./load-comments";
-import { saveComment, saveReply } from "./save-comments";
+import { loadCommentById, loadComments } from "./load-comments";
+import { saveComment, saveCommentUpdate, saveReply } from "./save-comments";
 
 describe("Save Comments", () => {
   test("should save a comment", async () => {
@@ -21,5 +21,17 @@ describe("Save Comments", () => {
     expect(oldComments[0].replies?.length ?? 0).toEqual(
       newComments[0].replies!.length - 1,
     );
+  });
+
+  test("should save modifications to a comment", async () => {
+    const [comment] = await loadComments();
+    expect(comment).toBeTruthy();
+    await saveCommentUpdate({
+      reference: comment.id,
+      comment: comment.text + "some new text",
+    });
+    const updated = await loadCommentById(comment.id);
+    expect(updated).toBeTruthy();
+    expect(comment.text).not.toEqual(updated?.text);
   });
 });
