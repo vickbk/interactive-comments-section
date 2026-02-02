@@ -1,75 +1,108 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Interactive comments section solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Get up and running](#get-up-and-running-with-few-steps)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-## React Compiler
+## Overview
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### The challenge
 
-Note: This will impact Vite dev & build performances.
+Users should be able to:
 
-## Expanding the ESLint configuration
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, Read, Update, and Delete comments and replies
+- Upvote and downvote comments
+- Use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
+- Dynamically track the time since the comment or reply was posted.
+- Switch between user sessions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Get up and running with few steps:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Clone the repo
+  ```bash
+  git clone git@github.com:vickbk/interactive-comments-section.git
+  ```
+- Install the dependancies
+  ```bash
+  pnpm install
+  ```
+- Start the server
+  ```bash
+  pnpm dev
+  ```
+- Build a production preview
+  ```bash
+  pnpm build
+  ```
+- Preview the built file
+  ```bash
+  pnpm preview
+  ```
+- Run tests
+  ```bash
+  pnpm test
+  ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Screenshot
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+![](./project/design/solution/desktop-open-user-switch.png)
+![](./project/design/solution/mobile-design.png)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Links
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Solution URL: [Github Repo](https://github.com/vickbk/interactive-comments-section/)
+- Live Site URL: [Github pages](https://vickbk.github.io/interactive-comments-section//)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Mobile-first workflow
+- [SASS](https://sass-lang.com/) - CSS Preprocessor
+- [Tailwindcss](https://tailwindcss.com/) - CSS framework
+- [React](https://reactjs.org/) - JS library
+- [Vite](https://vite.dev/) - A build tool for the web
+- [Vitest](https://vitest.dev/) - A Next Generation Testing Framework
+
+### What I learned
+
+During this project I combined both TDD and unit first for test writting.
+The TDD method was mostly used to integrate new functionalities such as voting, replying while I could get my self caught in the unit first when something was missing in the implementation.
+
+I also added an intergration test that covers all the interactions on the component from switching accounts, adding and deleting comments and replies.
+
+### Continued development
+
+As I am getting familiar with testing I will continue adding it my existing projects to get the best of results.
+
+### Useful resources
+
+- [FEM Frontend Testing Introduction](https://www.frontendmentor.io/learning-paths/introduction-to-front-end-testing-kacF_IJQO5) - This helped me on understanding frontend testing and getting started
+- [Roadmap.sh](https://roadmap.sh/react) - This React roadmap is helping in grasping react knowledge
+
+## Author
+
+- Github - [@vickbk](https://github.com/vickbk)
+- Frontend Mentor - [@vickbk](https://www.frontendmentor.io/profile/vickbk)
+- Twitter - [@Vick_bk8](https://x.com/Vick_bk8)
+
+## Acknowledgments
+
+For this project I use most of the knowlegde I got from the frontend roadmap, frontendmentor for HTML & css tricks and technics, accessibility and various developement techniques...
