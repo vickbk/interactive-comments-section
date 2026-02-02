@@ -1,4 +1,5 @@
 import { useCurrentSession, User } from "@/app/user";
+import { SROnly } from "@/components/shared";
 import { joinClasses } from "@/libs";
 import { useAccountSwitch } from "../hooks/use-account-switch";
 
@@ -22,6 +23,7 @@ export const UserSwitch = ({ open }: { open: boolean }) => {
             ])}
             type="button"
           >
+            <SROnly>Switch to </SROnly>
             <User id={id} showName />
           </button>
         </li>
