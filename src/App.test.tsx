@@ -15,12 +15,13 @@ describe("App", () => {
     expect((await screen.findAllByText(/a reply by/i)).length).not.toBe(0);
   });
 
-  test("should switch users from the user switch", async () => {
+  test("should switch users from the user switch and show you badge", async () => {
     render(<App />);
     const switcher = await screen.findByText(/switch user/i);
     expect(switcher).toBeVisible();
     await userEvent.click(switcher);
-    const lis = await screen.findAllByText(/switch to/i);
+
+    const lis = await screen.findAllByRole("button", { name: /switch to/i });
     expect(lis).not.toBeNull();
     expect(lis.length).not.toBe(0);
 
@@ -33,6 +34,12 @@ describe("App", () => {
       await screen.findByRole("heading", { name: /logged in as.*juliusomo/s }),
     );
 
+    expect(
+      await screen.findAllByRole("heading", {
+        name: /juliusomo.*this is.*you/i,
+      }),
+    ).not.toBe(0);
+
     const userAmy = await screen.findByRole("button", {
       name: /amyrobson/i,
     });
@@ -40,6 +47,12 @@ describe("App", () => {
     expect(
       await screen.findByRole("heading", { name: /logged in as.*amyrobson/s }),
     );
+
+    expect(
+      await screen.findAllByRole("heading", {
+        name: /amyrobson.*this is.*you/i,
+      }),
+    ).not.toBe(0);
   });
 
   test("should add new comment", async () => {
