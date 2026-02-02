@@ -98,7 +98,7 @@ describe("App", () => {
     await userEvent.click(deleteBtn);
 
     const confirmDelete = await screen.findByRole("button", {
-      name: /yes/i,
+      name: /yes, delete/i,
     });
     await userEvent.click(confirmDelete);
     const { length: newCount } = await screen.queryAllByRole("button", {
