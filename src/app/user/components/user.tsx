@@ -17,11 +17,7 @@ export const User = ({
         <SROnly>User</SROnly>
       </dt>
       <dd className="flex items-center gap-4">
-        <img
-          className="rounded-full max-w-12"
-          src={user?.image}
-          alt="user avatar"
-        />
+        <img className="rounded-full max-w-12" src={user?.image || ""} alt="" />
         <span
           className={joinClasses([
             !showName && "sr-only",

@@ -11,7 +11,7 @@
   @if math.is-unitless($pixels) == false {
     $unit: math.unit($pixels);
     $pixels: math.div($pixels, $pixels * 0 + 1);
-    @if list.index(em rem, $unit) != null {
+    @if not list.index(em rem, $unit) {
       $divider: 1;
     }
   }
