@@ -5,7 +5,7 @@ import { seedComments } from "./seed-comments";
 export async function loadComments() {
   const comments =
     getMemoItem<CommentType[]>("comments") || (await seedComments());
-  return comments;
+  return comments.sort(({ createdAt: aT }, { createdAt: bT }) => bT - aT);
 }
 
 export async function loadCommentsOnly() {
