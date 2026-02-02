@@ -44,5 +44,21 @@ describe("App", () => {
 
   test("should add new comment", async () => {
     render(<App />);
+
+    const oldCount = (await screen.findAllByText(/a comment by/i)).length;
+    const commentAdder = await screen.findByPlaceholderText(/Add a comment/i);
+    await userEvent.type(commentAdder, "This is a new comment");
+
+    const commentForm = commentAdder.closest("form");
+    expect(commentForm).toBeVisible();
+
+    const submitBtn = commentForm?.querySelector("button");
+    expect(submitBtn).toBeVisible();
+
+    await userEvent.click(submitBtn!);
+
+    expect(
+      (await screen.findAllByText(/a comment by/i)).length,
+    ).toBeGreaterThan(oldCount);
   });
 });
