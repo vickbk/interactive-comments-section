@@ -86,4 +86,25 @@ describe("App", () => {
       countReplies,
     );
   });
+
+  test("should delete a comment", async () => {
+    render(<App />);
+    const allDeleteBtns = await screen.findAllByRole("button", {
+      name: /delete/i,
+    });
+
+    const { length: oldCount } = allDeleteBtns;
+    const [deleteBtn] = allDeleteBtns;
+    await userEvent.click(deleteBtn);
+
+    const confirmDelete = await screen.findByRole("button", {
+      name: /yes/i,
+    });
+    await userEvent.click(confirmDelete);
+    const { length: newCount } = await screen.queryAllByRole("button", {
+      name: /delete/i,
+    });
+
+    expect(newCount).toBeLessThan(oldCount);
+  });
 });
