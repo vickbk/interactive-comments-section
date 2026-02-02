@@ -61,4 +61,29 @@ describe("App", () => {
       (await screen.findAllByText(/a comment by/i)).length,
     ).toBeGreaterThan(oldCount);
   });
+
+  test("should add a reply", async () => {
+    render(<App />);
+
+    const countReplies = (await screen.findAllByText(/a reply by/i)).length;
+
+    expect(countReplies).not.toBe(0);
+
+    const [replyOpener] = await screen.findAllByRole("button", {
+      name: /reply.*to post/i,
+    });
+    await userEvent.click(replyOpener);
+
+    const replyInput = await screen.findByPlaceholderText(/add a reply/i);
+    await userEvent.type(replyInput, "some good reply");
+
+    const replyForm = replyInput?.closest("form");
+    expect(replyForm).toBeVisible();
+
+    await userEvent.click(replyForm!.querySelector("button")!);
+
+    expect((await screen.findAllByText(/a reply by/i)).length).toBeGreaterThan(
+      countReplies,
+    );
+  });
 });
